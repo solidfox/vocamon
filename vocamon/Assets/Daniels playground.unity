@@ -91,11 +91,7 @@ NavMeshSettings:
 GameObject:
   m_PrefabParentObject: {fileID: 100096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
   m_PrefabInternal: {fileID: 426306157}
---- !u!4 &115288367 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
-  m_PrefabInternal: {fileID: 426306157}
---- !u!114 &115288371
+--- !u!114 &115288369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -103,17 +99,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 115288366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9001bcbd91e76437cb0f52f12764f2f0, type: 3}
+  m_Script: {fileID: 11500000, guid: bca39cc6d483f4159bd6eb25130b814d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1.5
   lookSmoother: 3
   useCurves: 1
   useCurvesHeight: .5
-  forwardSpeed: 7
-  backwardSpeed: 2
-  rotateSpeed: 2
-  jumpPower: 3
+  movementSpeed: 7
 --- !u!54 &115288372
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,15 +144,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 311.628998
+      value: 311.630005
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: .660000026
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 146.101395
+      value: 146.100006
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_LocalRotation.x
@@ -206,16 +199,16 @@ Prefab:
     - {fileID: 11400000, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &590291971
+--- !u!1 &460032439
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 590291974}
-  - 218: {fileID: 590291973}
-  - 154: {fileID: 590291972}
+  - 4: {fileID: 460032442}
+  - 218: {fileID: 460032441}
+  - 154: {fileID: 460032440}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -223,25 +216,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!154 &590291972
+--- !u!154 &460032440
 TerrainCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 590291971}
+  m_GameObject: {fileID: 460032439}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: cc1fd08e3652b4b63b3b3bb30eefa08f, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 628f9c26d54ac49f5ac91d8b699d75ee, type: 2}
   m_EnableTreeColliders: 1
---- !u!218 &590291973
+--- !u!218 &460032441
 Terrain:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 590291971}
+  m_GameObject: {fileID: 460032439}
   m_Enabled: 1
   serializedVersion: 3
-  m_TerrainData: {fileID: 15600000, guid: cc1fd08e3652b4b63b3b3bb30eefa08f, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 628f9c26d54ac49f5ac91d8b699d75ee, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -264,18 +257,18 @@ Terrain:
   m_BakeLightProbesForTrees: 1
   m_ScaleInLightmap: .0511999987
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
---- !u!4 &590291974
+--- !u!4 &460032442
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 590291971}
+  m_GameObject: {fileID: 460032439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 49.9000015, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &964536897
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,9 +341,10 @@ GameObject:
   - 124: {fileID: 1681401391}
   - 92: {fileID: 1681401390}
   - 81: {fileID: 1681401389}
+  - 114: {fileID: 1681401393}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,12 +355,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1681401387}
-  m_LocalRotation: {x: .130526215, y: 0, z: 0, w: .991444886}
-  m_LocalPosition: {x: -0, y: 1.5, z: -1.5}
+  m_LocalRotation: {x: .423725277, y: 0, z: 0, w: .905790806}
+  m_LocalPosition: {x: 312.320007, y: 9.19999981, z: 143.600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 115288367}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!81 &1681401389
 AudioListener:
   m_ObjectHideFlags: 0
@@ -420,3 +414,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!114 &1681401393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681401387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
