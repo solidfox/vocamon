@@ -62,8 +62,6 @@ public class UnityChanControlScriptVocamon : MonoBehaviour
 	{
 		float horizontalInputAxis = Input.GetAxis("Horizontal");				// 入力デバイスの水平軸をhで定義
 		float verticalInputAxis = Input.GetAxis("Vertical");				// 入力デバイスの垂直軸をvで定義
-		this.animator.SetFloat("Speed", verticalInputAxis);							// Animator側で設定している"Speed"パラメタにvを渡す
-		this.animator.SetFloat("Direction", horizontalInputAxis); 						// Animator側で設定している"Direction"パラメタにhを渡す
 		this.animator.speed = animationSpeed;								// Animatorのモーション再生速度に animSpeedを設定する
 		AnimatorStateInfo currentBaseState = animator.GetCurrentAnimatorStateInfo(0);	// 参照用のステート変数にBase Layer (0)の現在のステートを設定する
 
@@ -78,12 +76,16 @@ public class UnityChanControlScriptVocamon : MonoBehaviour
 		movementVector.y = 0;
 		movementVector.Normalize ();
 		movementVector *= movementSpeed;		// 移動速度を掛ける
+		this.animator.SetFloat("CharacterSpeed", movementVector.magnitude);							// Animator側で設定している"Speed"パラメタにvを渡す
 
 		// 上下のキー入力でキャラクターを移動させる
 		this.transform.localPosition += movementVector * Time.fixedDeltaTime;
 
-		this.transform.forward = movementVector;
-	
+		if (movementVector.magnitude > 0.1) {
+			this.transform.forward = movementVector;
+		}
+
+		this.cameraObject.transform.LookAt (this.transform);
 
 		// 以下、Animatorの各ステート中での処理
 		// Locomotion中
@@ -94,49 +96,6 @@ public class UnityChanControlScriptVocamon : MonoBehaviour
 				resetCollider();
 			}
 		}
-		// JUMP中の処理
-		// 現在のベースレイヤーがjumpStateの時
-		else if(currentBaseState.nameHash == jumpState)
-		{
-			cameraObject.SendMessage("setCameraPositionJumpView");	// ジャンプ中のカメラに変更
-			// ステートがトランジション中でない場合
-			if(!animator.IsInTransition(0))
-			{
-				
-				// 以下、カーブ調整をする場合の処理
-				if(useCurves){
-					// 以下JUMP00アニメーションについているカーブJumpHeightとGravityControl
-					// JumpHeight:JUMP00でのジャンプの高さ（0〜1）
-					// GravityControl:1⇒ジャンプ中（重力無効）、0⇒重力有効
-					float jumpHeight = animator.GetFloat("JumpHeight");
-					float gravityControl = animator.GetFloat("GravityControl"); 
-					if(gravityControl > 0)
-						rb.useGravity = false;	//ジャンプ中の重力の影響を切る
-										
-					// レイキャストをキャラクターのセンターから落とす
-					Ray ray = new Ray(transform.position + Vector3.up, -Vector3.up);
-					RaycastHit hitInfo = new RaycastHit();
-					// 高さが useCurvesHeight 以上ある時のみ、コライダーの高さと中心をJUMP00アニメーションについているカーブで調整する
-					if (Physics.Raycast(ray, out hitInfo))
-					{
-						if (hitInfo.distance > useCurvesHeight)
-						{
-							col.height = orgColHight - jumpHeight;			// 調整されたコライダーの高さ
-							float adjCenterY = orgVectColCenter.y + jumpHeight;
-							col.center = new Vector3(0, adjCenterY, 0);	// 調整されたコライダーのセンター
-						}
-						else{
-							// 閾値よりも低い時には初期値に戻す（念のため）					
-							resetCollider();
-						}
-					}
-				}
-				// Jump bool値をリセットする（ループしないようにする）				
-				animator.SetBool("Jump", false);
-			}
-		}
-		// IDLE中の処理
-		// 現在のベースレイヤーがidleStateの時
 		else if (currentBaseState.nameHash == idleState)
 		{
 			//カーブでコライダ調整をしている時は、念のためにリセットする
