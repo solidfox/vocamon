@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TriggerScript : MonoBehaviour {
-
+	public Text MainText;
+	public CanvasGroup MainCanvasGroup;
 	void OnTriggerEnter(Collider other){
-		Debug.Log ("Enter trigger XD ");
+		MainText.text = "I am Bear 1 XDD";
+		MainCanvasGroup.alpha = 1;
 	}
 
 	void OnTriggerStay(Collider other){
-		Debug.Log ("Trigger stay XD");
+	
 	}
 
 	void OnTriggerExit(Collider other){
-		Debug.Log ("Trigger Exit XD");
+		MainText.text = "";
+		MainCanvasGroup.alpha = 0;
 	}
 }
